@@ -32,14 +32,30 @@ Az erőforrások használata nagy részletességgel monitorozandó, mely megkön
 
 ##Cloud rendszerek szolgáltatás szerinti csoportosítása
 
+<div id="IPSaaS">
+![Cloud rendszerek szolgáltatás szerinti csoportosítása\label{IPSaas}[@IPSaaS]](img/IPSaas.png)
+</div>
+
 ###Software as a Service
+Az a képesség biztosított, hogy a felhasználó használja a szolgáltató applikációját egy felhő infrastruktúrán. A szolgáltatás elérhető különböző klienseken keresztül, akár vékonykliensen, mint például a webböngésző, vagy egy programspecifikus API-n keresztül. A felhasználó nem menedzseli vagy felügyelheti a program alatt futó felhő infrastruktúrát, beleértve az operációs rendszert, a hálózatot, szervereket vagy a tárhelyet, eltekintve néhány felhasználó függő alkalmazásspecifikus konfigurációs beállítástól.[@NIST]
 
 ###Platform as a Service
+Az a képesség biztosított, hogy a felhasználó telepítheti az általa írt, vagy más forrásból szerzet alkalmazást a felhő infrastruktúrára, a szolgáltató által biztosított programozási nyelvek, könyvtárak, szolgáltatások és eszközök segítségével. A felhasználó nem menedzseli vagy felügyelheti a program alatt futó felhő infrastruktúrát, beleértve az operációs rendszert, a hálózatot, szervereket vagy a tárhelyet, de az ő irányítása alatt állnak a telepített applikációk és konfigurációs beállításai az alkalmazás hoszting környezetnek.[@NIST]
 
 ###Infrastructure  as a Service
+A képesség biztosított, hogy a felhasználó rendelkezhet a processzor idő, a háttértár, a hálózat és egyéb alapvető számítási erőforás felett, melyre bármilyen szoftvert telepíthet, mely magában foglalja az operációs rendszert a probramnyelvek futtatási környezetét és egyéb alaklmazásokat.[@NIST]
 
 ##Cloud rendszerek szervezés szerinti csoportosítása
 
-###Public cloud
 ###Private cloud
+A felhő infrastruktúrát azért tartják fent, hogy kizárólagos rendelkezésére álljon egy szervezetnek, mely állhat több kisebb felhasználóból (pl. szervezet rész). Tulajdonosa, üzemeltetője lehet a szervezet, vagy egy harmadik fél, vagy e kettő kombinációja. Helyileg lehet a szervezet területén, vagy máshol is.[@NIST]
+
+###Community cloud
+A felhő infrastruktúrát azért tartják fent, hogy kizárólagos rendelkezésére egy felhasználókból álló specifikus közöségnek, mely olyan szervezetekből jöttek létre, amelyek ugyanazokat az elveket (célt, biztonsági előírást, eljárásmódot) tartják fontosnak. Tulajdonosa, üzemeltetője lehet egy vagy több a közöségben lévő szervezet, vagy egy harmadik fél, vagy e kettő kombinációja. Helyileg lehet a szervezet területén, vagy máshol is.[@NIST]
+
+###Public cloud
+A felhő infrastruktúrát azért tartják fent, hogy a mindenki számára rendelkezésre álljon. Tulajdonosa, üzemeltetője lehet üzleti vállalkozás, akadémiai vagy kormányzati szervezet, vagy ezek valamilyen kombinációja. Helyileg a szolgáltató területén létezik.[@NIST]
+ 
 ###Hibrid cloud
+A felhő infrastruktúra két vagy több különböző felhő infrastruktúrából (private, community, vagy public) áll, melyek különálló egyedek maradnak, de összeköti őket egy sztenderdizált, vagy egyedi technológia, ami lehetővé teszi az alkalmazások hordozhatóságát. (pl. cloud bursting a felhők közötti terheléselosztásra).[@NIST]
+
