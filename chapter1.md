@@ -37,13 +37,17 @@ Az erőforrások használata nagy részletességgel monitorozandó, mely megkön
 </div>
 
 ###Software as a Service
-Az a képesség biztosított, hogy a felhasználó használja a szolgáltató applikációját egy felhő infrastruktúrán. A szolgáltatás elérhető különböző klienseken keresztül, akár vékonykliensen, mint például a webböngésző, vagy egy programspecifikus API-n keresztül. A felhasználó nem menedzseli vagy felügyelheti a program alatt futó felhő infrastruktúrát, beleértve az operációs rendszert, a hálózatot, szervereket vagy a tárhelyet, eltekintve néhány felhasználó függő alkalmazásspecifikus konfigurációs beállítástól.[@NIST]
+Az a képesség biztosított, hogy a felhasználó használja a szolgáltató applikációját egy felhő infrastruktúrán. A szolgáltatás elérhető különböző klienseken keresztül, mint például a webböngésző. A felhasználó nem menedzseli vagy felügyelheti a program alatt futó felhő infrastruktúrát, beleértve az operációs rendszert, a hálózatot, szervereket vagy a tárhelyet, eltekintve néhány felhasználó függő alkalmazásspecifikus konfigurációs beállítástól.[@NIST]
+Jelenleg a legelterjedtebb ilyen szolgáltatás a Google Apps, mely magában foglalja a levelező kliensét(GMail), naptár szolgáltatását (Calendar), és irodai programcsomagját(Docs, Spreadsheet, Slides) és még pár alkalmazást. Ezek az alkalmazások ingyen hozzáférhetőek a nagyközönség számára, de a vállalatok privát használatra előfizethetnek, mellyel leválthatják a klasszikus asztali számítógépre telepített irodai szoftvereiket.
+Ezen kívül még nagyon sok szolgáltatás van melyek az asztali számítógépeinket szinte vékonykliensé egyszerűsítik le például a zenei szolgáltatást nyújtó Spotify, a CRM szolgáltatást nyújtó Salesforce, vagy a Microsoft Office 365 szolgáltatása.
 
 ###Platform as a Service
 Az a képesség biztosított, hogy a felhasználó telepítheti az általa írt, vagy más forrásból szerzet alkalmazást a felhő infrastruktúrára, a szolgáltató által biztosított programozási nyelvek, könyvtárak, szolgáltatások és eszközök segítségével. A felhasználó nem menedzseli vagy felügyelheti a program alatt futó felhő infrastruktúrát, beleértve az operációs rendszert, a hálózatot, szervereket vagy a tárhelyet, de az ő irányítása alatt állnak a telepített applikációk és konfigurációs beállításai az alkalmazás hoszting környezetnek.[@NIST]
+Ilyen szolgáltatást nyújt a Google App Engine ahol Java, Python, PHP és Go fejlesztőkörnyezeteket kapunk, vagy a Heroku amely Ruby, Python, Java, Scala, Cloture és Node.js programjainkat futtathatjuk könnyedén. Esetleg az ennél specifikusab szolgáltatással rendelkező Acquia, ahol a php-re épülő Drupal-t hosztolhatunk könnyedén, minden egyébb fejlesztő környezet beállításából adódó gond nélkül. 
 
 ###Infrastructure  as a Service
-A képesség biztosított, hogy a felhasználó rendelkezhet a processzor idő, a háttértár, a hálózat és egyéb alapvető számítási erőforás felett, melyre bármilyen szoftvert telepíthet, mely magában foglalja az operációs rendszert a probramnyelvek futtatási környezetét és egyéb alaklmazásokat.[@NIST]
+A képesség biztosított, hogy a felhasználó rendelkezhet a processzor idő, a háttértár, a hálózat és egyéb alapvető számítási erőforrás felett, melyre bármilyen szoftvert telepíthet, mely magában foglalja az operációs rendszert a programnyelvek futtatási környezetét és egyéb alkalmazásokat.[@NIST]
+Ez a szolgáltatás a fentebb említett két szolgáltatás(Saas, Paas) alapja, ennél a szolgáltatásnál a felhasználó gyakorlatilag virtuális szervereket bérel, melyek paramétereit (processzor teljesítmény, memória, háttértár) maga adja meg. Ilyen szolgátatást nyújt a Amazon Web Services, a Rackspace és még néhány szólgáltató melyeket a következő fejezetben mutatok be részletesen.
 
 ##Cloud rendszerek szervezés szerinti csoportosítása
 
@@ -58,4 +62,3 @@ A felhő infrastruktúrát azért tartják fent, hogy a mindenki számára rende
  
 ###Hibrid cloud
 A felhő infrastruktúra két vagy több különböző felhő infrastruktúrából (private, community, vagy public) áll, melyek különálló egyedek maradnak, de összeköti őket egy sztenderdizált, vagy egyedi technológia, ami lehetővé teszi az alkalmazások hordozhatóságát. (pl. cloud bursting a felhők közötti terheléselosztásra).[@NIST]
-
