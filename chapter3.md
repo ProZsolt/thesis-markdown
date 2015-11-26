@@ -12,7 +12,7 @@ A várható átlagos terhelésre tervezzük a rendszerünket és ennek megfelel�
 Mindig az igénynek megfelelő erőforrást foglalunk le, így az üzemeltetési költségeink az optimális szintet tarthatóak és az összes hozzánk érkezett kérést ki tudjuk szolgálni. Ehhez a módszerhez már nem elég a tervezési fázisban eldönteni a rendszer kapacitását, folyamatosan figyelni kell az igényeket, és ennek megfelelően változtatni a rendszer állapotát. Ennek a problémának a megoldására a következő fejezetben ismertetek néhány algoritmust, melyek leveszik a terhet a vállunkról.
 
 ##Főbb skálázási típusok
-Amikor skálázásról beszélünk két féle skálázási módszert különböztetünk meg
+Amikor skálázásról beszélünk két féle skálázási módszert különböztetünk meg[@hwang_cloud_2015][@whatScalability]
 
 ###Scaling up
 Ekkor újabb erőforrásokat egyazon logikai egységhez, például több memóriát vagy nagyobb processzor teljesítményt.
