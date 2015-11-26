@@ -50,6 +50,7 @@ A képesség biztosított, hogy a felhasználó rendelkezhet a processzor idő, 
 Ez a szolgáltatás a fentebb említett két szolgáltatás(Saas, Paas) alapja, ennél a szolgáltatásnál a felhasználó gyakorlatilag virtuális szervereket bérel, melyek paramétereit (processzor teljesítmény, memória, háttértár) maga adja meg. Ilyen szolgátatást nyújt a Amazon Web Services, a Rackspace és még néhány szólgáltató melyeket a következő fejezetben mutatok be részletesen.
 
 ##Cloud rendszerek szervezés szerinti csoportosítása
+[KÉP]
 
 ###Private cloud
 A felhő infrastruktúrát azért tartják fent, hogy kizárólagos rendelkezésére álljon egy szervezetnek, mely állhat több kisebb felhasználóból (pl. szervezet rész). Tulajdonosa, üzemeltetője lehet a szervezet, vagy egy harmadik fél, vagy e kettő kombinációja. Helyileg lehet a szervezet területén, vagy máshol is.[@NIST]

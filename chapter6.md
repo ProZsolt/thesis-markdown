@@ -1,5 +1,6 @@
 #Terhelési minták
 Ahhoz, hogy meg tudjuk vizsgálni az egyes algoritmusok minőségét, szükséges megérteni, hogy az oldalunkra látogatók milyen rendszerességgel érkeznek. Ezért lentebb ismertetem a valóságban előforduló terhelési minták csoportosítását.[@mao_auto-scaling_2011]
+[KÉP]
 
 ##Stabil
 Amikor egy kiszolgálóhoz folyamatosan érkeznek be a kérések, nem változik nagyon a terhelés. Ilyen a terhelése például egy monitorozó rendszereknek, melyre mindig hasonló mennyiségű kérés érkezik.

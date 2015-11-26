@@ -1,7 +1,7 @@
 #Skálázási módszerek
 
 ##Erőforrás allokáció
-javaslat: ide is jöhetne vmi rizs, pl hogy többféle van és igényeinkhez igazítjuk. ha ismersz olyat ami valamelyik lent említett tervezést használja, íhatsz példát is. ha nem, az sem baj.
+[KÉP]
 
 ###Maximumra tervezés
 A várható terhelés maximumára tervezzük a rendszerünket és ennek megfelelően foglaljuk le az erőforrásainkat, így minden beérkező igényt ki tudunk elégíteni. Hátránya, hogy az idő nagy részében az erőforrásaink kihasználatlanok, így a nem használt erőforrásainkért feleslegesen fizetünk. 
