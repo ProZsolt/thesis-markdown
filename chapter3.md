@@ -18,7 +18,7 @@ Amikor skálázásról beszélünk két féle skálázási módszert különböz
 ###Scaling up
 Ekkor újabb erőforrásokat adunk egyazon logikai egységhez, például több memóriát vagy nagyobb processzor teljesítményt.
 Virtuális gépeknél mindezt gyorsan és könnyen megtehetjük minden különösebb erőfeszítés nélkül, egy két kattintással, vagy pár sor kóddal.
-Előnye, hogy nem kell új gépet menedzselni és a gépek közötti kommunikációt megoldani, illetve az estleges szoftver licencekből is kevesebb kell. Hátránya hogy az esetleges rendszerhiba esetén egy nagyom ?ez itt mi akar lenni, nagyobb esetleg? kapacitás esik ki a rendszerünkből. 
+Előnye, hogy nem kell új gépet menedzselni és a gépek közötti kommunikációt megoldani, illetve az estleges szoftver licencekből is kevesebb kell. Hátránya hogy az esetleges rendszerhiba esetén egy nagyobb kapacitás esik ki a rendszerünkből. 
 
 ###Scaling out
 Ilyenkor ahelyett, hogy megnövelnénk az egyik logikai egységünk teljesítményét, egy újabb logikai egységet adunk a már létező mellé. Egy ilyen rendszer sokkal jobban bírja a terhelést és nagyobb hibatűréssel rendelkezik, viszont az egyre növekvő számú gépparkunk több és több adminisztrációs feladatot ró ránk.
