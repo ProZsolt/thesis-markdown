@@ -1,11 +1,13 @@
 #IaaS cloud szolgáltatók
 
+Jelenleg egyre több cloud szolgáltató van a piacon és nem könnyű kiválasztani az igényünknek legmegfelelőbbet, mivel minden szolgáltatónak megvannak a maga előnyei és hátrányai. Ha már letettük a voksunkat egy szolgáltató mellett, akkor már nem minden esetben olyan könnyű váltani, mivel nem kínálnak a hordozhatóságot elősegítő eszközöket egy-két esettől eltekintve. Alábbiakban részletezem a legnagyobb infrastruktúra szolgáltatókat.
+
 ##Amazon Web Services
 
 <div id="amazon-aws">
 ![Az Amazon Web Services logója\label{amazon-aws}](img/amazon-aws.jpg)
 </div>
-Az Amazon Web Services teljes körű számítási és adattárolási szolgáltatást nyújt, olyan alapvető szolgáltatásoktól kezdve, mint az EC2 instance-ok, egészen az olyan speciális szolgáltatásokig, mint például az Amazon Elastic Map Reduce (EMR) vagy a Cluster GPU instance-ok. Háttértárolás terén Elastic Block Storage (EBS) és a Simple Storage Service (S3) áll rendelkezésre. Ezen kívül még vannak még különböző IaaS-hoz kapcsolódó szolgáltatásai, mint például munkafolyamatok, üzenet küldés, archiválás, kereső szolgáltatás, relációs és NoSQL adatbázisok és més sok minden más. Szolgáltatások számát tekintve az Amazon az első.
+Az Amazon Web Services teljes körű számítási és adattárolási szolgáltatást nyújt, olyan alapvető szolgáltatásoktól kezdve, mint az EC2 instance-ok, egészen az olyan speciális szolgáltatásokig, mint például az Amazon Elastic Map Reduce (EMR) vagy a Cluster GPU instance-ok. Háttértárolás terén Elastic Block Storage (EBS) és a Simple Storage Service (S3) áll rendelkezésre. Ezen kívül vannak még különböző IaaS-hoz kapcsolódó szolgáltatásai is, mint például munkafolyamatok, üzenet küldés, archiválás, kereső szolgáltatás, relációs és NoSQL adatbázisok és még sok minden más. Szolgáltatások számát tekintve az Amazon vezető szerepet tölt be.
 
 ##Rackspace Open Cloud
 
@@ -13,7 +15,7 @@ Az Amazon Web Services teljes körű számítási és adattárolási szolgáltat
 ![A Rackspace Open Cloud logója\label{rackspace}](img/rackspace.jpg)
 </div>
 
-Rackspace egy alapvető felhő szolgáltatást nyújt, nagy figyelmet fordítva az ügyfélközpontúságra. Rackspace az egyik alapítója az OpenStack-nek, melyet a felhő infrastruktúrájánál is használ. Így ha később, ha saját privát vagy hibrid felhőt szeretnénk használni nem kell a fejlesztést előrről kezdeni, mivel az infrastruktúránk könnyen átvihető.
+Rackspace egy alapvető felhő szolgáltatást nyújt, nagy figyelmet fordítva az ügyfélközpontúságra. Rackspace az egyik alapítója az OpenStack-nek, melyet a felhő infrastruktúrájánál is használ. Így később, ha saját privát vagy hibrid felhőt szeretnénk használni, nem kell a fejlesztést előrről kezdeni, mivel az infrastruktúránk könnyen átvihető.
 
 ##DigitalOcean
 
@@ -37,4 +39,4 @@ A névvel ellentétbe a Windows Azure nem csak a Windows operációs renszer fut
 ![A Google Compute Engine logója\label{google-compute-engine}](img/google-compute-engine.jpg)
 </div>
 
-A Google Compute Engine jól illeszkedik big data, adattárház, és egyébb analítikához kapcsolódó alkalmazásokhoz Jól integrálódik a többi Google szolgáltatással, mint a Google Cloud Storage, a Google BigQeury és a Google Cloud SQL. Bár a Google Compute Engine egy relatív új szolgáltatás az IaaS piacon, a tény, hogy a Google globális infrastruktúráján fut, beleértve a privát optikai hálózatát és magas hatékonyságú adatközpontjait emeli ki a többi közül.
+A Google Compute Engine jól illeszkedik big data, adattárház, és egyébb analítikához kapcsolódó alkalmazásokhoz Jól integrálódik a többi Google szolgáltatással, mint a Google Cloud Storage, a Google BigQeury és a Google Cloud SQL. Bár a Google Compute Engine egy relatív új szolgáltatás az IaaS piacon, a tény, hogy a Google globális infrastruktúráján fut, beleértve a privát optikai hálózatát és magas hatékonyságú adatközpontjait, emeli ki a többi közül.
