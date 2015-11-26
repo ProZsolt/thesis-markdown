@@ -37,7 +37,7 @@ Szabályozás elmélet
 A szabályozó rendszereknek három fajtála van, ezek az open loop, a feedback és a feed-forward
 
 ### Nyílt
-Csak a rendszer jelenlegi állapotát és a rendszerről alkotott modellt ?mit csinál vele?. Nem használ visszacsatolást, hogy a rendszer elérte e a kívánt végeredmént vagy nem.
+Csak a rendszer jelenlegi állapotát és a rendszerről alkotott modellt ismeri. Nem használ visszacsatolást, hogy a rendszer elérte-e a kívánt végeredmént vagy nem.
 
 ### Visszacsatolt
 Figyelik a rendszer kimenetét, és korrigálják a kívánt céltól való eltérést.

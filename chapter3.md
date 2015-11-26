@@ -16,8 +16,8 @@ Mindig az igénynek megfelelő erőforrást foglalunk le, így az üzemeltetési
 Amikor skálázásról beszélünk két féle skálázási módszert különböztetünk meg[@hwang_cloud_2015][@whatScalability]
 
 ###Scaling up
-Ekkor újabb erőforrásokat egyazon logikai egységhez ?mit csinálunk velük?, például több memóriát vagy nagyobb processzor teljesítményt.
-Virtuális gépeknél mindezt gyorsan és könnyen megtehetjük minden különösebb erőfeszítés nélkül.
+Ekkor újabb erőforrásokat adunk egyazon logikai egységhez, például több memóriát vagy nagyobb processzor teljesítményt.
+Virtuális gépeknél mindezt gyorsan és könnyen megtehetjük minden különösebb erőfeszítés nélkül, egy két kattintással, vagy pár sor kóddal.
 Előnye, hogy nem kell új gépet menedzselni és a gépek közötti kommunikációt megoldani, illetve az estleges szoftver licencekből is kevesebb kell. Hátránya hogy az esetleges rendszerhiba esetén egy nagyom ?ez itt mi akar lenni, nagyobb esetleg? kapacitás esik ki a rendszerünkből. 
 
 ###Scaling out

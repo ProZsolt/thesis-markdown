@@ -10,13 +10,13 @@ A cloud computing mostanára inkább buzzword lett, mintsem konkrét definíció
 Az Amazon (aki elsők között nyújtott cloud szolgáltatást ) szerint a cloud computing igény szerinti IT erőforrások és applikációk elérése az interneten keresztül. Annyit fizetsz amennyit használsz árazással.[@AmazonCloud]
 A témában releváns publikációkban és cikkekben található rengeteg felületes, ellentmondásos megfogalmazás épp ezért én a ipari szabvány definícióját irom le, melyet a National Institute of Standards and Technology fogalmazott meg.
 
-##NIST definíció ???
-Cloud computing egy modell, amely lehetővé tesz egy  mindenütt jelenlevő, kényelmes, igény szerinti hálózati hozzáférést egy megosztott, összevont pool konfigurálható számítási erőforrásokból (pl. hálózatok, szerverek, háttértárolók, alkalmazások és szolgáltatások), gyorsan le lehet foglalni és felszabadítani minimális menedzselési erőfeszítéssel vagy a szolgáltatói interakcióval.[@NIST]
+##NIST definíció 
+A cloud computing egy modell, amely lehetővé tesz egy mindenütt jelenlevő, kényelmes, igény szerinti hálózati hozzáférést, hogy egy konfigurálható, megosztott számítási erőforrás poolból (pl. hálózatok, szerverek, háttértárolók, alkalmazások és szolgáltatások), gyorsan le lehessen foglalni és felszabadítani erőforrásokat minimális menedzselési erőfeszítéssel vagy a szolgáltatói interakcióval.[@NIST]
 
 ##A felhő modell öt alapvető jellegzetessége
 
 ### Igény szerinti önkiszolgáló
-A fogyasztó egyoldalúan rendelkezik számítástechnikai erőforrásokról, mint például a processzor idő és hálózati tároló, automatikusan anélkül, hogy? emberi beavatkozásra lenne szükség az egyes szolgáltatóknál.
+A fogyasztó egyoldalúan rendelkezik számítástechnikai erőforrásokról, mint például a processzor idő és hálózati tároló, automatikusan anélkül, hogy emberi beavatkozásra lenne szükség az egyes szolgáltatóknál.
 
 ### Széles hálózati hozzáférés
 A szolgáltatások hálózaton keresztül hozzáférhetőek, olyan protokollon keresztül melyet rengeteg eszköz (pl. munkaállomás, laptop, mobiltelefon, tablet) támogat.
@@ -62,5 +62,3 @@ A felhő infrastruktúrát azért tartják fent, hogy a mindenki számára rende
  
 ###Hibrid cloud
 A felhő infrastruktúra két vagy több különböző felhő infrastruktúrából (private, community, vagy public) áll, melyek különálló egyedek maradnak, de összeköti őket egy sztenderdizált, vagy egyedi technológia, ami lehetővé teszi az alkalmazások hordozhatóságát. (pl. cloud bursting a felhők közötti terheléselosztásra).[@NIST]
-
-javaslat: ÁBRA

@@ -1,5 +1,7 @@
 #IaaS cloud szolgáltatók
-javaslat: ide jöhetne 1-2 mondat arról hogz sokféle ilyen van és attól függően választjuk ki, hogy mire akarjuk használni...
+
+Jelenleg egyre több cloud szolgáltató van a piacon és nem könnyű kiválasztani az igényünknek legmegfelelőbbet, mivel minden szolgáltatónak megvannak a maga előnyei és hátrányai. Ha már letettük a voksunkat egy szolgáltató mellett, akkor már nem minden esetben olyan könnyű váltani, mivel nem kínálnak a hordozhatóságot elősegítő eszközöket egy-két esettől eltekintve. Alábbiakban részletezem a legnagyobb infrastruktúra szolgáltatókat.
+
 ##Amazon Web Services
 
 <div id="amazon-aws">
