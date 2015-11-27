@@ -1,8 +1,8 @@
 #Skálázási algoritmusok minőségmodellje
 
 ##Felhő infrastruktúra minőségmodellje
-Mielőtt belemennénk a skálázási algoritmusok minőségének a vizsgálatába, először általánosságban beszélni a felhő infrastruktúra minőségi tényezőiről.
-Alapvetően 3 csoportra bonthatjuk a minőséggel kapcsolatos metrikákat, ezek pedig: alapvető teljesítmény metrikákra, felhő képességekre és felhő termelékenységre. [@hwang_cloud_2015]
+Mielőtt belemennék a skálázási algoritmusok minőségének a vizsgálatába, először általánosságban beszélek a felhő infrastruktúra minőségi tényezőiről.
+Alapvetően 3 csoportra bonthatjuk a minőséggel kapcsolatos metrikákat, ezek pedig: alapvető teljesítmény metrikák, felhő képességek és felhő termelékenység. [@hwang_cloud_2015]
 
 ###Alapvető teljesítmény metrikák
 Ezek az alapvető metrikák nem csak a felhő infrastruktúrára jellemezőek, hanem a klasszikus szerverparkokon üzemeltettet párhuzamos, elosztott szolgáltatásokra is ugyanúgy vonatkoztathatóak. 
@@ -11,11 +11,11 @@ Ezek az alapvető metrikák nem csak a felhő infrastruktúrára jellemezőek, h
  * Sebesség: Adott idő alatt elvégzett műveletek száma
  * Sebesség növekedés: Sebesség növekedés amit azzal érünk el, hogy egy újabb számítási egységet kapcsolunk a rendszerbe
  * Hatékonyság: Az elérhető teljesítmény maximumának százaléka
- * Skálázhatóság: A képesség hogy az erőforrások skálázásával rendszerteljesítmény nyerjünk
+ * Skálázhatóság: A képesség hogy az erőforrások skálázásával rendszerteljesítményt nyerjünk
  * Elaszticitás: A rendszer alkalmazkodóképessége az idővel változó terhelésre
  
 ###Felhő képességek
-Ezek a mérőszámokat, amelyek leírják a hardver, szoftver, hálózati és hibatűrő képességét egy felhő infrastruktúrának az alábbiak szerint.
+Ezek azok a mérőszámok, amelyek leírják a hardver, szoftver, hálózati és hibatűrő képességét egy felhő infrastruktúrának az alábbiak szerint.
 
  * Késleltetés: A kérés elküldésétől az első válasz beérkezéséig eltelt idő.
  * Átengedő képesség: Átlagos kérések/műveletek/taszkok száma adott idő alatt.
@@ -23,10 +23,10 @@ Ezek a mérőszámokat, amelyek leírják a hardver, szoftver, hálózati és hi
  * Háttértár kapacitás: Virtuális lemezek tárolókapacitása.
  * Szoftver eszközök: Szoftver hordozhatóság, API és SDk eszközök a felhőalkalmazások fejlesztéséhez.
  * Bigdata analizálás: Az a képesség, hogy kiderítsük a rejtett információkat, és megjósoljuk a jövőt.
- * Visszaállíthatóság: Visszaállíthatósági arány vagy a képességgel, hogy visszaáll az eredeti állapotába egy  hiba vagy katasztrófa esetén.
+ * Visszaállíthatóság: A visszaállíthatóság aránya vagy a képességge, hogy visszaáll az eredeti állapotába egy hiba vagy katasztrófa esetén.
  
 ###Felhő termelékenység
-Ezek a szolgáltatással kapcsolatos metrikák, melyek megmutatják, hogy az adott infrastruktúrán nyújtott szolgáltatás minőségel és árral kapcsolatos mutatóit.
+Ezek a szolgáltatással kapcsolatos metrikák, melyek megmutatják az adott infrastruktúrán nyújtott szolgáltatás minőséggel és árral kapcsolatos mutatóit.
 
  * Szolgáltatás minősége: A felhőszolgáltatással kapcsolatos elégedettség mértéke vagy egy benchmark teszt eredménye.
  * Energiaigény: A cloud computing rendszer energia fogyasztása
@@ -36,7 +36,7 @@ Ezek a szolgáltatással kapcsolatos metrikák, melyek megmutatják, hogy az ado
  * Termelékenység: Egységnyi költségre vetített felhő szolgáltatás teljesítményt.
  
 ##Skálázási algoritmusok minőségmodellje
-A fentebb általánosságban bemutattam a felhőhöz kapcsolódó metrikákat, alábbiakban részletesen fogok írni a skálá
+A fentebb általánosságban bemutattam a felhőhöz kapcsolódó metrikákat, alábbiakban részletesen fogok írni a skálázáshoz szorosan kapcsolódó minőségi jellemzőket.
 
 ###Késleltetés
 Késleltetésen a kérés elküldésétől az első válasz beérkezéséig eltelt időt értjük.
@@ -48,8 +48,8 @@ Elaszticitás a rendszer alkalmazkodóképessége az idővel változó terhelés
 
 ###Üzemeltetési költség
 Üzemeltetési költségen a felhőszolgáltatások (processzor teljesítmény, háttértár) adott időre eső költségét értjük.
-Minél több/nagyobb szervert futtatunk annál nagyobb az üzemeltetési költségünk, ezért törekedni kell arra, hogy a rendszeren nincsen terhelés, akkor ne használjunk feleslegesen erőforrásokat.
+Minél több/nagyobb szervert futtatunk annál nagyobb az üzemeltetési költségünk, ezért törekedni kell arra, hogy ha a rendszeren nincsen terhelés, akkor ne használjunk feleslegesen erőforrásokat.
 
 ###Elérhetőség
-Elérhetőség azt mutatja hogy a rendszer az idő hány százalékában ad választ a kéréseinkre.
+Elérhetőség azt mutatja, hogy a rendszer az idő hány százalékában ad választ a kéréseinkre.
 A terhelés egészen addig nőhet, hogy a rendszer nem csak egyre hosszabb idő múlva ad választ, hanem egyáltalán nem tudja kiszolgálni a hozzá beérkezett kéréseinket, ekkor mondjuk, hogy a rendszer elérhetetlenné vált. Általában a szolgáltatási szint megállapodásban (röviden: SLA) van megadva egy érték, hogy a szolgáltatásnak az idő hány százalékában kell elérhetőnek lennie, ha ezt a szolgáltató megsérti, akkor a felhasználó jogosult a kártalanítást kérnie a szolgáltatótól.
