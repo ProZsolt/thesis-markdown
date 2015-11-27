@@ -2,6 +2,7 @@
 
 ##Erőforrás allokáció
 [KÉP]
+[@lorido-botran_auto-scaling_2012]
 
 ###Maximumra tervezés
 A várható terhelés maximumára tervezzük a rendszerünket és ennek megfelelően foglaljuk le az erőforrásainkat, így minden beérkező igényt ki tudunk elégíteni. Hátránya, hogy az idő nagy részében az erőforrásaink kihasználatlanok, így a nem használt erőforrásainkért feleslegesen fizetünk. 
