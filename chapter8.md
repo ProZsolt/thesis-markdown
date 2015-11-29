@@ -1,25 +1,28 @@
 # Desing overview
 Szakdolgozatom sororán egy olyan mérési környezetet alakítottam ki, ami teljesen moduláris, így később, ha módosítani kellene, például más IaaS szolgáltatót szeretnénk használni, vagy más metrika gyűjtési módszert alkalmazni, vagy a későbbiekben bemutatott különböző algoritmusokat szeretnénk használni, akkor csak a adott modult kell kicserélni, illetve maximum minimális változtatásokat eszközölni az alkalmazás többi részén.
-Az általm készült rendszer a 5 részből áll, ahogy azt az ábrán láthatjuk.
+Az általam készült rendszer a 5 részből áll, ahogy azt az ábrán láthatjuk.
 
-
+[KÉP]
 
 ##IaaS infrastruktúra
-
+IaaS szolgáltatónál megvalósított infrastruktúra, mely tartalmaz egy két rétegű infrastruktúrát. Egy skálázható alkalmazási réteget, előtte egy load balancer-t és mögötte egy adatbázis réteget.
+Az Amazon Web Service-n történő konkrét megvalósításról a 10. fejezetben írok bővebben.
 
 ###WordPress
-A Wordpress egy nyílt forráskódú weboldal készítő eszköz PHP-ben írva. A világ egyik legnépszerűbb tartalomkezelő rendszere.
+Alkalmazási rétegben a WordPress tartalomkezelő rendszert fogom skálázni.
+A WordPress egy nyílt forráskódú weboldal készítő eszköz PHP-ben írva. A világ egyik legnépszerűbb tartalomkezelő rendszere.
 
 ##Forgalom generátor
-Cél az volt, hogy a valóságban előforduló forgalomfajtákat (menyről részletesebben a 7. fejezetben írtam) generáljunk és ezzel terheljük meg a rendszerünket.
+A forgalom generátor feladata, hogy a valóságban előforduló forgalomfajtákkal (menyről részletesebben a 7. fejezetben írtam) terhelje meg a rendszert, hogy a rendszernek erre adott válaszát mérni tudjuk.
+A JMeter-el történő konkrét megvalósításról a 10. fejezetben írok bővebben.
 
 ##Monitor
 
-Eza a modul felelős a különböző metrikák begyüjtéséért, tárolásáért és hogy egy interfacet biztosítson a lekérdezésre.
+Ez a modul felelős a különböző metrikák begyütéséért, tárolásáért és hogy egy interfészt biztosítson a lekérdezésre. Tervezésnél fontosnak tartottam, hogy ezeket a metrikákat minél több helyről tudjam összegyűjteni.
+A Graphite-al történő konkrét megvalósításról a 10. fejezetben írok bővebben.
 
-
-##Scaler
-
+##Skálázó
+A mérési környezet lényegét adó modul, mely felelős a Monitor által begyűjtött metrikákból eldönteni, hogy a rendszernek milyen állapotra kell hozni, igényel-e még erőforrásokat, vagy jelenleg túl sok kihasználatlan erőforrás van lefoglalva. Majd amikor döntésre jutott az Erőforrás kontroller segítségével érvényre juttatni.
 
 ##Erőforrás kontroller
 Ez felelős a Scaler-által ígényelt erőforrások lefoglalásáért. Interfaceként szolgál az IaaS infrastruktúra felé, esetleges IaaS szolgáltató váltásnál elég ezt lecserélni.
