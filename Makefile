@@ -9,7 +9,7 @@ RESEARCH_GROUP = Hibatűrő Rendszerek Kutatócsoport
 THESIS_TYPE = Szakdolgozat
 DOCUMENT_LANG = magyar
 BEFORE_FILE = guideline.md
-SOURCE_FILES = abstract.md chapter0.md chapter1.md chapter2.md chapter3.md chapter4.md chapter5.md chapter6.md chapter7.md chapter8.md chapter9.md summary.md acknowledgements.md bibliography.md
+SOURCE_FILES = abstract.md chapter1.md chapter2.md chapter3.md chapter4.md chapter5.md chapter6.md chapter7.md chapter8.md chapter9.md chapter10.md chapter11.md chapter12.md chapter13.md summary.md acknowledgements.md bibliography.md
 APPENDIX_FILE = appendix.md
 
 # variables for the PDF/HTML compiler

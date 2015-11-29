@@ -1,18 +1,55 @@
-#Terhelési minták
-Ahhoz, hogy meg tudjuk vizsgálni az egyes algoritmusok minőségét, szükséges megérteni, hogy az oldalunkra látogatók milyen rendszerességgel érkeznek. Ezért lentebb ismertetem a valóságban előforduló terhelési minták csoportosítását.[@mao_auto-scaling_2011]
-[KÉP]
+#Skálázási algoritmusok minőségmodellje
 
-##Stabil
-Amikor egy kiszolgálóhoz folyamatosan érkeznek be a kérések, nem változik nagyon a terhelés. Ilyen a terhelése például egy monitorozó rendszereknek, melyre mindig hasonló mennyiségű kérés érkezik.
+##Felhő infrastruktúra minőségmodellje
+Mielőtt belemennék a skálázási algoritmusok minőségének a vizsgálatába, először általánosságban beszélek a felhő infrastruktúra minőségi tényezőiről.
+Alapvetően 3 csoportra bonthatjuk a minőséggel kapcsolatos metrikákat, ezek pedig: alapvető teljesítmény metrikák, felhő képességek és felhő termelékenység. [@hwang_cloud_2015]
 
-##Növekvő
-Erről akkor beszélünk, amikor a terhelés egyre növekvő tendenciát mutat. Ilyen egy híroldal vagy egy videómegosztó oldal terhelése. Amint egy friss hírt jelenik meg az oldalon, egyre több kérés érkezik az oldal felé, annak megfelelően ahogy az adott hír egyre népszerűbb lesz és egyre többen hivatkoznak rá, mint forrás.
+###Alapvető teljesítmény metrikák
+Ezek az alapvető metrikák nem csak a felhő infrastruktúrára jellemezőek, hanem a klasszikus szerverparkokon üzemeltettet párhuzamos, elosztott szolgáltatásokra is ugyanúgy vonatkoztathatóak. 
 
-##Ciklus
-Ciklikusnak nevezzük azokat a terhelési mintákat amelyet egy online üzlet produkál. Reggeltől egyre több kérés érkezik a kiszolgálóhoz egészen estig, amikor ismét csökkenni kezd. De beszélhetünk éves ciklusról is, amikor karácsony közeledtével megnő a kereslet az ajándékozási láz miatt.
+ * Futási idő: Az program futása alatt eltelt idő
+ * Sebesség: Adott idő alatt elvégzett műveletek száma
+ * Sebesség növekedés: Sebesség növekedés amit azzal érünk el, hogy egy újabb számítási egységet kapcsolunk a rendszerbe
+ * Hatékonyság: Az elérhető teljesítmény maximumának százaléka
+ * Skálázhatóság: A képesség hogy az erőforrások skálázásával rendszerteljesítményt nyerjünk
+ * Elaszticitás: A rendszer alkalmazkodóképessége az idővel változó terhelésre
+ 
+###Felhő képességek
+Ezek azok a mérőszámok, amelyek leírják a hardver, szoftver, hálózati és hibatűrő képességét egy felhő infrastruktúrának az alábbiak szerint.
 
-##Ki és be
-Ilyen terhelési mintáról akkor beszélünk, amikor csak ritkán érkezik terhelés a rendszerre, például batch feldolgozásnál. Ekkor a rendszert rövid ideig használják, majd utána szinte ki lehet kapcsolni, vagy nagyon minimális erőforrással lehet üzemeltetni. Ilyen lehet a terhelés mintája például az online videokódoló rendszereknek, melyeket időnként használnak renderelésre, de a kérés lefutása után nem jut rá nagy terhelés.
+ * Késleltetés: A kérés elküldésétől az első válasz beérkezéséig eltelt idő.
+ * Átengedő képesség: Átlagos kérések/műveletek/taszkok száma adott idő alatt.
+ * Sávszélesség: Adatátviteli sebesség vagy I/O feldolgozási sebesség.
+ * Háttértár kapacitás: Virtuális lemezek tárolókapacitása.
+ * Szoftver eszközök: Szoftver hordozhatóság, API és SDk eszközök a felhőalkalmazások fejlesztéséhez.
+ * Bigdata analizálás: Az a képesség, hogy kiderítsük a rejtett információkat, és megjósoljuk a jövőt.
+ * Visszaállíthatóság: A visszaállíthatóság aránya vagy a képességge, hogy visszaáll az eredeti állapotába egy hiba vagy katasztrófa esetén.
+ 
+###Felhő termelékenység
+Ezek a szolgáltatással kapcsolatos metrikák, melyek megmutatják az adott infrastruktúrán nyújtott szolgáltatás minőséggel és árral kapcsolatos mutatóit.
 
-##Slashdot effect
-A növekvő terhelési minta egy végletének is lehet értelmezni, amikor egy oldal hirtelen, órák, vagy akár percek alatt hihetetlen nagyon népszerű lesz és egyre többen és többen akarják elérni. A nem ekkora terhelésre tervezett oldalak pillanatok alatt elérhetetlenné válhatnak, még akkor is, ha terveztek bele valamilyen skálázódást, csak ahhoz emberi beavatkozásra lenne szügség, ami ennyi idő alatt nem lehetséges.[@killalea_building_2008]
+ * Szolgáltatás minősége: A felhőszolgáltatással kapcsolatos elégedettség mértéke vagy egy benchmark teszt eredménye.
+ * Energiaigény: A cloud computing rendszer energia fogyasztása
+ * Üzemeltetési költség: A nyújtott felhőszolgáltatások (processzor teljesítmény, háttértár) adott időre eső költsége.
+ * Szolgáltatási szint megállapodás / biztonság: A szolgáltatási szint megállapodásnak, a biztonsági-, titoktartási-, szerzői jogi szabályoknak való megfelelés
+ * Elérhetőség: Az idő hány százalékában érhető el a rendszer.
+ * Termelékenység: Egységnyi költségre vetített felhő szolgáltatás teljesítményt.
+ 
+##Skálázási algoritmusok minőségmodellje
+A fentebb általánosságban bemutattam a felhőhöz kapcsolódó metrikákat, alábbiakban részletesen fogok írni a skálázáshoz szorosan kapcsolódó minőségi jellemzőket.
+
+###Késleltetés
+Késleltetésen a kérés elküldésétől az első válasz beérkezéséig eltelt időt értjük.
+Minél terheltebb a rendszerünk (minél nagyobb a processzor, memória kihasználtsága) annál lassabban tudja a rendszer a kéréseket kiszolgálni. Ez a felhasználó felé a szolgáltatás minőségének romlását eredményezi, mivel tovább kell várnia egy művelet végrehajtására.
+
+###Elaszticitás
+Elaszticitás a rendszer alkalmazkodóképessége az idővel változó terhelésre.
+
+
+###Üzemeltetési költség
+Üzemeltetési költségen a felhőszolgáltatások (processzor teljesítmény, háttértár) adott időre eső költségét értjük.
+Minél több/nagyobb szervert futtatunk annál nagyobb az üzemeltetési költségünk, ezért törekedni kell arra, hogy ha a rendszeren nincsen terhelés, akkor ne használjunk feleslegesen erőforrásokat.
+
+###Elérhetőség
+Elérhetőség azt mutatja, hogy a rendszer az idő hány százalékában ad választ a kéréseinkre.
+A terhelés egészen addig nőhet, hogy a rendszer nem csak egyre hosszabb idő múlva ad választ, hanem egyáltalán nem tudja kiszolgálni a hozzá beérkezett kéréseinket, ekkor mondjuk, hogy a rendszer elérhetetlenné vált. Általában a szolgáltatási szint megállapodásban (röviden: SLA) van megadva egy érték, hogy a szolgáltatásnak az idő hány százalékában kell elérhetőnek lennie, ha ezt a szolgáltató megsérti, akkor a felhasználó jogosult a kártalanítást kérnie a szolgáltatótól.

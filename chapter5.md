@@ -1,55 +1,52 @@
-#Skálázási algoritmusok minőségmodellje
+#Automatikus skálázás algoritmusok
 
-##Felhő infrastruktúra minőségmodellje
-Mielőtt belemennék a skálázási algoritmusok minőségének a vizsgálatába, először általánosságban beszélek a felhő infrastruktúra minőségi tényezőiről.
-Alapvetően 3 csoportra bonthatjuk a minőséggel kapcsolatos metrikákat, ezek pedig: alapvető teljesítmény metrikák, felhő képességek és felhő termelékenység. [@hwang_cloud_2015]
+Skálázó algoritmusokat általánosságban két csoportba sorolhatjuk. Egy algoritmus lehet reaktív, mely a rendszer egy valamilyen állapotára reagál, például érzékelik, hogy kevés az erőforrás, akkor allokál újabbakat . A proaktív algoritmusok ezzel szemben előrre próbálják jelezni a rendszer elkövetkezendő állapotát, hogy az erőforrások rendelkezésre álljanak, amikor később szügség lesz rájuk.
 
-###Alapvető teljesítmény metrikák
-Ezek az alapvető metrikák nem csak a felhő infrastruktúrára jellemezőek, hanem a klasszikus szerverparkokon üzemeltettet párhuzamos, elosztott szolgáltatásokra is ugyanúgy vonatkoztathatóak. 
+##Ütemterv alapú
+Számításba veszi a forgalom napszakok szerinti változását. Az erőforrás allokáció mauálisan van beprogramozva a napszaktól függően. Például a délutáni időszakban nagyobb forgalom várható, ezért ilyenkor több erőforrásra van szükség, míg az éjszaka folyamán kissebb a forgalom, ezért ilyenkor kevesebb erőforrásra van szügség, mint az átlag. Nem tud reagálni a forgalomba bekövetkező váratlan változásokra.
 
- * Futási idő: Az program futása alatt eltelt idő
- * Sebesség: Adott idő alatt elvégzett műveletek száma
- * Sebesség növekedés: Sebesség növekedés amit azzal érünk el, hogy egy újabb számítási egységet kapcsolunk a rendszerbe
- * Hatékonyság: Az elérhető teljesítmény maximumának százaléka
- * Skálázhatóság: A képesség hogy az erőforrások skálázásával rendszerteljesítményt nyerjünk
- * Elaszticitás: A rendszer alkalmazkodóképessége az idővel változó terhelésre
- 
-###Felhő képességek
-Ezek azok a mérőszámok, amelyek leírják a hardver, szoftver, hálózati és hibatűrő képességét egy felhő infrastruktúrának az alábbiak szerint.
+##Szabály alapú
+A legtöbb szolgáltató ezt használja. Ehhez az egyszerű megközelítéshez általában két szabályt kell megfogalmazni, hogy mikor skálázzunk fel, illetve mikor skálázzunk le. A felhasználónak valamilyen metrika szerinti feltételt kell megfogalmaznia. Például, ha az átlagos processzor kihasználtság nagyobb mint 70%. Ha a feltétel teljesült, akkor automatikusan triggerelődik az előrre definiált skálázási akció: elindít egy újabb virtuális szervert. A szabály alapú automatikus skálázó algoritmusokat, reaktív algoritmusok közé sorolhatjuk.
 
- * Késleltetés: A kérés elküldésétől az első válasz beérkezéséig eltelt idő.
- * Átengedő képesség: Átlagos kérések/műveletek/taszkok száma adott idő alatt.
- * Sávszélesség: Adatátviteli sebesség vagy I/O feldolgozási sebesség.
- * Háttértár kapacitás: Virtuális lemezek tárolókapacitása.
- * Szoftver eszközök: Szoftver hordozhatóság, API és SDk eszközök a felhőalkalmazások fejlesztéséhez.
- * Bigdata analizálás: Az a képesség, hogy kiderítsük a rejtett információkat, és megjósoljuk a jövőt.
- * Visszaállíthatóság: A visszaállíthatóság aránya vagy a képességge, hogy visszaáll az eredeti állapotába egy hiba vagy katasztrófa esetén.
- 
-###Felhő termelékenység
-Ezek a szolgáltatással kapcsolatos metrikák, melyek megmutatják az adott infrastruktúrán nyújtott szolgáltatás minőséggel és árral kapcsolatos mutatóit.
+##Idősor elemzés
+A idősor elemzésnél bizonyos metrikákat, például az átlagos processzor kihasználtságot, vagy a beérkező terhelést megadott időközönként mintavételezzük. Az eredmény egy idősor lesz, ami tartalmazza az elmúlt n megfigyelés sorozatát. A automatikus skálázás problémája két részre bontható: az elkövetkezendő metrika előrejelzésre, illetve az ebből következő döntéshozásra. Az idősor elemzést csak az első felére tudjuk alkalmazni, a másodikra használatunk például egyszrű szabály alapú skálázást.
+A idősor elemzésnek két célja van, előre jelezni a jövő beli értéket az elmúlt megfigyelések alapján, illetve mintákat felismerni, melyből extrapolálható a jövőbeli érték.
 
- * Szolgáltatás minősége: A felhőszolgáltatással kapcsolatos elégedettség mértéke vagy egy benchmark teszt eredménye.
- * Energiaigény: A cloud computing rendszer energia fogyasztása
- * Üzemeltetési költség: A nyújtott felhőszolgáltatások (processzor teljesítmény, háttértár) adott időre eső költsége.
- * Szolgáltatási szint megállapodás / biztonság: A szolgáltatási szint megállapodásnak, a biztonsági-, titoktartási-, szerzői jogi szabályoknak való megfelelés
- * Elérhetőség: Az idő hány százalékában érhető el a rendszer.
- * Termelékenység: Egységnyi költségre vetített felhő szolgáltatás teljesítményt.
- 
-##Skálázási algoritmusok minőségmodellje
-A fentebb általánosságban bemutattam a felhőhöz kapcsolódó metrikákat, alábbiakban részletesen fogok írni a skálázáshoz szorosan kapcsolódó minőségi jellemzőket.
+Módszerek
 
-###Késleltetés
-Késleltetésen a kérés elküldésétől az első válasz beérkezéséig eltelt időt értjük.
-Minél terheltebb a rendszerünk (minél nagyobb a processzor, memória kihasználtsága) annál lassabban tudja a rendszer a kéréseket kiszolgálni. Ez a felhasználó felé a szolgáltatás minőségének romlását eredményezi, mivel tovább kell várnia egy művelet végrehajtására.
+* Átlag
+  * Mozgó átlag
+  * Súlyzott mozgó átlag
+  * Exponenciális simítás
+* Autó-regresszió
+* Autó-regressziós mozgó átlag
+* Gépi tanulás
 
-###Elaszticitás
-Elaszticitás a rendszer alkalmazkodóképessége az idővel változó terhelésre.
+Minták
 
+* Minta felismerés
+* Jelfeldolgozó technikákat
+* Auto-korreláció
 
-###Üzemeltetési költség
-Üzemeltetési költségen a felhőszolgáltatások (processzor teljesítmény, háttértár) adott időre eső költségét értjük.
-Minél több/nagyobb szervert futtatunk annál nagyobb az üzemeltetési költségünk, ezért törekedni kell arra, hogy ha a rendszeren nincsen terhelés, akkor ne használjunk feleslegesen erőforrásokat.
+##Szabályozás elmélet
+A szabályozó rendszereknek három fajtála van, ezek az open loop, a feedback és a feed-forward
 
-###Elérhetőség
-Elérhetőség azt mutatja, hogy a rendszer az idő hány százalékában ad választ a kéréseinkre.
-A terhelés egészen addig nőhet, hogy a rendszer nem csak egyre hosszabb idő múlva ad választ, hanem egyáltalán nem tudja kiszolgálni a hozzá beérkezett kéréseinket, ekkor mondjuk, hogy a rendszer elérhetetlenné vált. Általában a szolgáltatási szint megállapodásban (röviden: SLA) van megadva egy érték, hogy a szolgáltatásnak az idő hány százalékában kell elérhetőnek lennie, ha ezt a szolgáltató megsérti, akkor a felhasználó jogosult a kártalanítást kérnie a szolgáltatótól.
+### Nyílt
+Csak a rendszer jelenlegi állapotát és a rendszerről alkotott modellt ismeri. Nem használ visszacsatolást, hogy a rendszer elérte-e a kívánt végeredmént vagy nem.
+
+### Visszacsatolt
+Figyelik a rendszer kimenetét, és korrigálják a kívánt céltól való eltérést.
+Fixed gain controllers
+Adaptive control
+Reconfiguring control
+Model predictive control
+
+### Előrecsatolt
+Megjósolják a rendszer viselkedését a róla alkotott modell alapján, és megelőzik a hibát mielőtt az bekövetkezne.
+
+##Megerősítéses tanulás
+A megerősítéses tanulás egy automatikus döntéshozó algoritmus, amelyet alkalmazhatunk automatikus skálázásra. A döntéshozó (ágens), a tapasztalataiból (próbálgatás) tanulja meg, hogy melyik a legjobb művelet amit végre kell hajtania a környezete bármely állapotában azáltal, hogy maximalizálni próbálja az érte kapott jutalmat. A mi esetünkben az autmatikus skálázó az ágens, aki kapcsolatban van a skálázandó alkalmazással (környezet), dönteni fog hogy adjon, illetve elvegye e erőforrásokat az alkalmazástól (művelet), a jelenlegi terheléstől, teljesítménytől és egyéb változóktól (állapot) függően úgy, hogy minimalizálja az alkalmazás válaszidejét vagy egyébb változóit (jutalom).
+
+##Sorbanállás-elmélet
+A sorbanállás-elmélet a különböző folyamatok eseményeivel kapcsolatos várakozási sorokat, a sorbanállási időket a kiszolgálásra és ezek összefüggéseit tárgyalja az alkalmazott matematikai eszközeivel. A sorbanállási elméletben becslési modellt alkotnak a sorbanállás hosszáról és időtartartamáról, valamint a kiszolgálás sikerességéről. Az egyszerű csomóponti sorbanállásokat a Kendall-féle jelöléssel jellemezzük A/B/C/K/N/D formában, ahol A írja le a beérkezési időközt, B a munka nagyságát (kiszolgálási idő), C a kiszolgálók számát, K a rendszer kapacitását vagy a sor hosszát, N az igényforrás számosságát, D a kiszolgálás elvét vagy a fontossági sorrendet.
+A mi esetünket megfeleltethetjük ezt egy egyszerű csomóponti sorbanállásnak úgy, hogy egy sor megy a terhelés elosztóhoz, ami elosztja a kéréseket a virtuális szerverek felé.
