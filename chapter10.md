@@ -29,19 +29,28 @@ t2.large       2               8GB       8GB       0.104$/óra
 -------------- --------------- --------- --------- ----------
 
 ###Identity and Access Management (IAM)
-Segítségével könnyen és biztonságosan kontrollálhatjuk hozzáférést az AWS erőforrásokhoz és szolgáltatásokhoz. IAM-mel készíthetük és menedzselhetjük a felhasználókat és csoportokat, valamint szabájokat állíthatunk fel, hogy mihez férjenek hozzá és mihez ne.
+Segítségével könnyen és biztonságosan kontrollálhatjuk hozzáférést az AWS erőforrásokhoz és szolgáltatásokhoz. IAM-mel készíthetük és menedzselhetjük a felhasználókat és csoportokat, valamint szabályokat állíthatunk fel, hogy mihez férjenek hozzá és mihez ne.
 
-###AMI
+###Amazon Machine Images (AMI)
+Az Amazon Machine Images biztosítja az információkat, melyek szükségesek ahhoz, hogy el tudjuk indítani a EC2-es Instance-okat.
+Következő dolgokat tartalmazza:
 
+* Egy sablonját az alapértelmezett meghatónak, mely tartalmazhatja az operációs rendszert, az alkalmazás szervert és az alkalmazásokat.
+* Indítási jogokat, mely tartalmazza melyik felhasználó használhatja új Instance indítására.
+* És a block device mapping-ot, hogy melyik meghajtót csatoljuk fel az intance-ra, amikor elindítjuk. 
 
-###ELB
+###Elastic Load Balancer(ELB)
+Ez round robin segítségével osztja szét a forgalmat a hozzárendelt kiszolgáló szerverek között. Egyszerűen tudunk hozzáadni és elvenni szervereket.
 
 ###CloudFormation
-
-###Autoscaling group
+Az AWS CloudFormation egy olyan eszközt ad a fejlesztők kezébe, mellyel egyszerűen lehet létrehozni és menedzselni az összefüggő AWS erőforrásokat.
+Könnyen írhatunk sablonokat JSON formátumban, melyben leírjuk a szükséges erőforrásokat. Nem kel nekünk kitalálni a lefoglalás sorrendjét, az AWS lefoglalja a szükséges sorrendben. Az így lefoglalt erőforrásokat egyben kezelhetjük, módosíthatjuk, szüntethetjük meg. Az egyben kezelt erőforrásokat stack-nek nevezzük.
 
 ###LaunchConfiguration
+A LaunchConfiguration tartalmaz minden szerverindításhoz kapcsolódó információt, úgy mint az instance típusa, az AMI-t, és tartalmazhat az első indításkor lefutó parancsokat, melyel alkalmazásokat telepíthetünk, illetve bekonfigurálhatjuk a szerverünket.
 
+###Autoscaling group
+Autoscaling segítségével könnyen skálázhatunk le és fel. Amikor létrehozunk egy ilyet, megadhatunk neki egy LaunchConfiguration-t, mely segítségével képes lesz új szerverek indítására. Segítségével egy egyszerű API hívás segítségével állíthatjuk be a futó szervereink számát, ha túl sok fut akkor leállít néhányat, ha kevés akkor meg újakat indít a beállított LaunchConfiguration segítségével. Hozzárendelhetünk egy vagy több Elastic Load Balancer-t mely segítségével eloszthatjuk rajta a forgalmat.
 
 ##Infrastruktúra megvalósítása
 Az általam használt infrastruktúrát egy CoudFormation template-tel építettem fel, így könnyen tudtam felépíteni és lebontani a stack-emet.
