@@ -28,6 +28,8 @@ t2.medium      2               4GB       8GB       0.052$/óra
 t2.large       2               8GB       8GB       0.104$/óra
 -------------- --------------- --------- --------- ----------
 
+Table: AWS t2 instance típusok
+
 ###Identity and Access Management (IAM)
 Segítségével könnyen és biztonságosan kontrollálhatjuk hozzáférést az AWS erőforrásokhoz és szolgáltatásokhoz. IAM-mel készíthetük és menedzselhetjük a felhasználókat és csoportokat, valamint szabályokat állíthatunk fel, hogy mihez férjenek hozzá és mihez ne.
 

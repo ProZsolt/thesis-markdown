@@ -94,5 +94,7 @@ Minőségi jellemző           Reaktív skálázó  Prediktív skálázó
 Elérhetőség (%)             97.2             98.1
 --------------------------- ---------------- ------------------
 
+Table: Mérési eredmények összehasonlítása 
+
 Az eredményekből láthatjuk, hogy egy még egyszerűen implementálható prediktív skálázó alkalmazásával is jobb eredményt érhetünk el, mint ha csak reaktív skálázást alkalmaznánk.
 

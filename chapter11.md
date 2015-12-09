@@ -39,6 +39,8 @@ Lekérdezés gyakorisága   akár 10 másodpercenként         5 perc ingyenesen
 Fejleszthetőség          Bárki írhat hozzá kiegészítést  Nem bővíthető
 ------------------------ ------------------------------- -------------------
 
+Table: A Collectd és a CloudWatch összehasonlítása
+
 ##Statsd
 Az Etsy által készítet hálózati démon mely node.js alapokon fut. Figyeli a UDP-n és TCP-n beérkező statisztikákat, majd agregálva továbbküldi őket egy vagy több backend szolgáltatásnak (pl.: Graphite).
 
