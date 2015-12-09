@@ -15,8 +15,6 @@ Főbb funkcók:
 * Könnyű paraméterezhetőség, mely magába foglalja az automata tesztgenerálást, és biztosítja hogy hozzáférhessünk külső fájlokhoz és adatbázisokhoz
 * Több protokol támogatása
 
-[KÉP]
-
 ###Gatling
 Gatling szintén egy ingyenes és nyílt forráskódú terhelés tesztelő alkalmazás. Elsődlegesen Stephane Landelle fejleszti és tartja karban. Gatlingnek egy egyszerű GUI-ja van, mely csak a teszt eredményeit hivatott megjeleníteni. A teszteket egy könnyen megtanulható domain specifikus nyelvben írhatjuk.
 
@@ -29,8 +27,6 @@ Főbb funkcók:
 * HTTPS protokol támogatása
 * Átfogó informatív értékelés
 
-[KÉP]
-
 ###Tsung
 Tsunk egy Erlang alapú nyílt forráskódú terhelés tesztelő alkalmazás. Nicolas Niclausse készítette 2001-ben hogy tesztelje a Jabber(XMPP) chat alkalmazást. 2003-ban már képes volt HTTP protokollon futtatott tesztekre is. Ma már egy teljes értékű teljesítmény ?ez kell ide kétszer? teljesítmény tesztelő szoftverré nőtte ki magát.
 Nem rendelkezik grafikus felülettel.
@@ -39,10 +35,8 @@ Főbb funkciók:
 * Elosztott felépítés
 * Az alapjául szolgáló többszálúságra tervezett Erlang nyelvnek köszönhetően rengeteg felhasználót tud kis erőforrással szimulálni
 * Több protokoll támogatása
-* Beépített, könnyen olvasható teszt jelentés, mely futás alatt is könnyen elérhető és megjeleníthető 
+* Beépített, könnyen olvasható teszt jelentés, mely futás alatt is könnyen elérhető és megjeleníthető
 * Külső adatforrások, adatvezérelt teszteléshez.
-
-[KÉP]
 
 ###JMeter
 JMeter egy Java nyelven írodott nyílt forráskódú, teljes értékű asztali alkalmazás. Apache Software Foundation készítette 2001-ben. Moduláris struktúrájú, egy core szoftver kiegészítve rengeteg pluginnal. A legtöbb protokol implementálva van pluginként.
@@ -51,11 +45,9 @@ Főbb funkcók:
 
 * Kereszt platformos. Minden operációs rendszeren fut amin van Java
 * Skálázható. Ha nagyobb terhelésre van szügségünk, mint amire egy gép képes, akkor egy master irányíthat több távoli alkalmazást
-* Sok protokollt támogat alapértelmezetten. 
+* Sok protokollt támogat alapértelmezetten.
 * Sok beépített és külső eszköz a teszt eredményeinek analizására és megjelenítésére.
 * Plugin-olható, melyek segítségével szinte minden feladatot képes ellátni.
-
-[KÉP]
 
 ##Forgalom generátor megvalósítása
 Az eszköz kiválasztásnál a fő szempontok a következők voltak:
@@ -74,10 +66,8 @@ Választásom a JMeterre eset mivel ez teljesen lefedi az általam támasztott i
 Cél az volt, hogy a valóságban előforduló forgalomfajtákat (menyről részletesebben a 7. fejezetben írtam) generáljunk és ezzel terheljük meg a rendszerünket.
 A szabályozható forgalom generálást a JMeter Throughput Shaping Timer Plugin-jével oldottam meg. A plugin segítségével könnyen beállíthatjuk a kívánt másodpercenkénti kérések számát.
 
-[KÉP]
-
 ###Felhasználók szimulálása
-Fontos, hogy ne csak statikus forgalmat generáljunk, például az index oldalnak az egymás utáni letöltését. Olyan forgalmat szeretnénk generálni, mintha valós felhasználók használnák az oldalt, cikkeket olvasnának, tartalmat szerkesztenének, postokra kommentelnének. Így nem csak a statikus oldal kiszolgálást teszteljük, hanem az adatbázisba írást, olvasást is. 
+Fontos, hogy ne csak statikus forgalmat generáljunk, például az index oldalnak az egymás utáni letöltését. Olyan forgalmat szeretnénk generálni, mintha valós felhasználók használnák az oldalt, cikkeket olvasnának, tartalmat szerkesztenének, postokra kommentelnének. Így nem csak a statikus oldal kiszolgálást teszteljük, hanem az adatbázisba írást, olvasást is.
 Első választásom a JMeterhez írt Selenium WebDriver-re eset, melyel valós felhasználók böngészését lehet modellezni Markov-láncok segítségével. Sajnos hamar kiderült, hogy az én esetemben alkalmatlan a feladatra, mivel nagyon sok erőforrást igényel, szimulált felhasználóként körülbelül egy processzormagot, így több ezer felhasználót figyelembe véve nem lehetséges a kivitelezése, csak igen költséges infrastruktúra segítségével.
 Majd sokat foglalkoztam saját teszt írásával, de ennek segítségével a WordPress funkcionalitásának csak egy kis részét tudtam szimulálni, nem volt benne süti kezelés, így nem tudtam tesztelni a bejelentkezett felhasználók viselkedését. Fejlesztés közben rátaláltam Shmuel Krakower által írt WordPress JMeter Template-re, mely orvosolta ezeket a hiányosságokat, és remek eszköznek ígérkezett az oldal teszteléséhez.
 A felhasználóval a következő funkciók vannak szimulálva:

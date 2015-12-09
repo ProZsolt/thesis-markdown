@@ -10,7 +10,7 @@ A cloud computing mostanára inkább buzzword lett, mintsem konkrét definíció
 Az Amazon (aki elsők között nyújtott cloud szolgáltatást ) szerint a cloud computing igény szerinti IT erőforrások és applikációk elérése az interneten keresztül. Annyit fizetsz amennyit használsz árazással.[@AmazonCloud]
 A témában releváns publikációkban és cikkekben található rengeteg felületes, ellentmondásos megfogalmazás épp ezért én a ipari szabvány definícióját irom le, melyet a National Institute of Standards and Technology fogalmazott meg.
 
-##NIST definíció 
+##NIST definíció
 A cloud computing egy modell, amely lehetővé tesz egy mindenütt jelenlevő, kényelmes, igény szerinti hálózati hozzáférést, hogy egy konfigurálható, megosztott számítási erőforrás poolból (pl. hálózatok, szerverek, háttértárolók, alkalmazások és szolgáltatások), gyorsan le lehessen foglalni és felszabadítani erőforrásokat minimális menedzselési erőfeszítéssel vagy a szolgáltatói interakcióval.[@NIST]
 
 ##A felhő modell öt alapvető jellegzetessége
@@ -22,7 +22,7 @@ A fogyasztó egyoldalúan rendelkezik számítástechnikai erőforrásokról, mi
 A szolgáltatások hálózaton keresztül hozzáférhetőek, olyan protokollon keresztül melyet rengeteg eszköz (pl. munkaállomás, laptop, mobiltelefon, tablet) támogat.
 
 ### Erőforrás pooling
-A szolgáltató számítástechnikai erőforrásait (pl. processzor kapacitás, memória, háttér tároló) összevonják úgy, hogy egyszerre több felhasználót tudjon kiszolgálni több bérlő (multi-tenant) modellben. A különböző fizikai és virtuális erőforrások dinamikusan hozzárendelhetők és újraoszthatók a fogyasztói kereslet függvényében. A fogyasztó általában nem tudja befolyásolni a biztosított erőforrásoknak a pontos helyét, csak egy magasabb absztrakciós szinten (pl. ország, város, vagy adatközpont). 
+A szolgáltató számítástechnikai erőforrásait (pl. processzor kapacitás, memória, háttér tároló) összevonják úgy, hogy egyszerre több felhasználót tudjon kiszolgálni több bérlő (multi-tenant) modellben. A különböző fizikai és virtuális erőforrások dinamikusan hozzárendelhetők és újraoszthatók a fogyasztói kereslet függvényében. A fogyasztó általában nem tudja befolyásolni a biztosított erőforrásoknak a pontos helyét, csak egy magasabb absztrakciós szinten (pl. ország, város, vagy adatközpont).
 
 ### Gyors elaszticitás
 Az erőforrásokat gyorsan le lehet foglalni és felszabadítani. A felhasználó szempontjából a hozzáférhető erőforrások poolja végtelennek tűnhet, akármikor, akármekkora mennyiségben foglalhat belőle le.
@@ -43,14 +43,13 @@ Ezen kívül még nagyon sok szolgáltatás van, melyek az asztali számítógé
 
 ###Platform as a Service
 Az a képesség biztosított, hogy a felhasználó telepítheti az általa írt, vagy más forrásból szerzett alkalmazást a felhő infrastruktúrára, a szolgáltató által biztosított programozási nyelvek, könyvtárak, szolgáltatások és eszközök segítségével. A felhasználó nem menedzseli vagy felügyelheti a program alatt futó felhő infrastruktúrát, beleértve az operációs rendszert, a hálózatot, szervereket vagy a tárhelyet, de az ő irányítása alatt állnak a telepített applikációk és konfigurációs beállításai az alkalmazás hoszting környezetnek.[@NIST]
-Ilyen szolgáltatást nyújt a Google App Engine ahol Java, Python, PHP és Go fejlesztőkörnyezeteket kapunk, vagy a Heroku amely Ruby, Python, Java, Scala, Cloture és Node.js programjainkat futtathatjuk könnyedén. Esetleg az ennél specifikusabb szolgáltatással rendelkező Acquia, ahol a php-re épülő Drupal-t hosztolhatunk könnyedén, minden egyébb fejlesztő környezet beállításából adódó gond nélkül. 
+Ilyen szolgáltatást nyújt a Google App Engine ahol Java, Python, PHP és Go fejlesztőkörnyezeteket kapunk, vagy a Heroku amely Ruby, Python, Java, Scala, Cloture és Node.js programjainkat futtathatjuk könnyedén. Esetleg az ennél specifikusabb szolgáltatással rendelkező Acquia, ahol a php-re épülő Drupal-t hosztolhatunk könnyedén, minden egyébb fejlesztő környezet beállításából adódó gond nélkül.
 
 ###Infrastructure  as a Service
 A képesség biztosított, hogy a felhasználó rendelkezhet a processzor idő, a háttértár, a hálózat és egyéb alapvető számítási erőforrás felett, melyre bármilyen szoftvert telepíthet, amely magában foglalja az operációs rendszert a programnyelvek futtatási környezetét és egyéb alkalmazásokat.[@NIST]
 Ez a szolgáltatás a fentebb említett két szolgáltatás(Saas, Paas) alapja, ennél a szolgáltatásnál a felhasználó gyakorlatilag virtuális szervereket bérel, melyek paramétereit (processzor teljesítmény, memória, háttértár) maga adja meg. Ilyen szolgátatást nyújt a Amazon Web Services, a Rackspace és még néhány szólgáltató melyeket a következő fejezetben mutatok be részletesen.
 
 ##Cloud rendszerek szervezés szerinti csoportosítása
-[KÉP]
 
 ###Private cloud
 A felhő infrastruktúrát azért tartják fent, hogy kizárólagos rendelkezésére álljon egy szervezetnek, mely állhat több kisebb felhasználóból (pl. szervezet rész). Tulajdonosa, üzemeltetője lehet a szervezet, vagy egy harmadik fél, vagy e kettő kombinációja. Helyileg lehet a szervezet területén, vagy máshol is.[@NIST]
@@ -60,6 +59,6 @@ A felhő infrastruktúrát azért tartják fent, hogy kizárólagos rendelkezés
 
 ###Public cloud
 A felhő infrastruktúrát azért tartják fent, hogy a mindenki számára rendelkezésre álljon. Tulajdonosa, üzemeltetője lehet üzleti vállalkozás, akadémiai vagy kormányzati szervezet, vagy ezek valamilyen kombinációja. Helyileg a szolgáltató területén létezik.[@NIST]
- 
+
 ###Hibrid cloud
 A felhő infrastruktúra két vagy több különböző felhő infrastruktúrából (private, community, vagy public) áll, melyek különálló egyedek maradnak, de összeköti őket egy sztenderdizált, vagy egyedi technológia, ami lehetővé teszi az alkalmazások hordozhatóságát. (pl. cloud bursting a felhők közötti terheléselosztásra).[@NIST]
