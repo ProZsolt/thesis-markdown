@@ -1,4 +1,4 @@
-#Scaler
+#Skálázó
 
 Ez a része a programonank teljesen moduláris, minvel lényege, hogy minél több skálázisi algoritmust egyszerűen ki lehessen próbálni.
 
@@ -11,9 +11,54 @@ A skálázáshoz szükséges metrikákat a Graphite HTTP API-ján keresztül ké
 A kálázási algoritmus végeredményét, hogy kell-e ki- vagy beskálázni az Erőforrás Controller megfelelő függvényeinek hivogatásával jutathatjuk érvényre.
 
 ##Automatikus skálázási algoritmusok
-A következőkben bemutatom néhány sálázási algoritmus konkrét megvalósítását.
+Kiválasztottam egy reaktív és egy prediktív algoritmust, melyek implementálásával és a mérés eredményeinek összehasonlításával demonstrálom a rendszer működését.
+Mindkét algoritmus működéséhez szügséges, hogy hozzáférjenek a következő metrikákhoz:
 
-###Szabály alapú
+* avgCPU[t] - A virtuális gépek átlagos processzor kihasználtsága t időpillanatban.
+* numVM - Aktuálisan futó virtuális gépek száma
+
+###Szabály alapú skálázás
+A legtöbb IaaS cloud szolgáltató alapjában véve ezt használja alapértelmezetten mivel relatívan egyszerű az implementálása és felhasználói szempontból egyszerű a paraméterezése.
+A következő paramétereket fogadja az algoritmus:
+
+* thrUp - A köszöb mely fölött felfele skálázunk (pl.: 70%-os processzor kihasználtság)
+* vUp - Ennyi másodpercig kell teljesülnia a fentebbi thrUp küszöbnek.
+* inUp - A felskálázás lecsengésének ideje másodpercben, eddig nem végzünk újabb skálázást, ha felskálázás történt.
+* thrDown - A köszöb mely fölött lefele skálázunk (pl.: 50%-os processzor kihasználtság)
+* vDown - Ennyi másodpercig kell teljesülnia a fentebbi thrDown küszöbnek.
+* inDown - A leskálázás lecsengésének ideje másodpercben, eddig nem végzünk újabb skálázást, ha leskálázás történt.
+
+Implementálása a következő algoritmus szerint történt:
+
+\begin{align*}
+&\text{ha avgCPU[t] > thrUp vUp másodpercen keresztül, akkor}\\
+&\hspace{1cm}numVM = numVM + 1\\
+&\hspace{1cm}\text{ne csinálj semmit inUp másodpercig}\\
+&\\
+&\text{ha avgCPU[t] < thrDown vDown másodpercen keresztül, akkor}\\
+&\hspace{1cm}numVM = numVM - 1\\
+&\hspace{1cm}\text{ne csinálj semmit inDown másodpercig}\\
+\end{align*}
 
 
-###ARIMA
+
+###Exponenciális simítás segítségével történő előrejelzés
+Exponenciális simitás segítségével megjósolhatjuk a rendszer következő állapotást
+
+
+##Skálázási algoritmusok összehasonlítása
+A rendszerem tesztelésére előállítottam a mestersége terhelést a JMeter segítségével.
+
+<div id="muterheles">
+![Mesterséges terhelés\label{muterheles}](img/muterheles.png)
+</div>
+
+
+----------------------
+Metrika                
+----------------------
+Késleltetés
+
+Üzemeltetési költség
+
+Elérhetőség
