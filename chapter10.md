@@ -56,6 +56,10 @@ Autoscaling segítségével könnyen skálázhatunk le és fel. Amikor létrehoz
 Az általam használt infrastruktúrát egy CoudFormation template-tel építettem fel, így könnyen tudtam felépíteni és lebontani a stack-emet.
 Az infrasruktúra a következő részekből áll:
 
+<div id="infrastruktura">
+![IaaS infrastruktúra modelje\label{infrastruktura}](img/infrastruktura.png)
+</div>
+
 ###Load Balancer
 Load balancernek az egyszerűség kedvéért az amazon beépített Elastic Load Balancerét használtam. Ez round robin segítségével osztja szét a forgalmat a kiszolgáló szerverek között. 
 CloudWatch segítségével kinyerhető belőle a fontosabb metrikák, melyeket skálázás során fel tudunk használni, úgy mint:

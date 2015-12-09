@@ -1,8 +1,10 @@
-# Desing overview
+# Mérési környezet áttekintése
 Szakdolgozatom sororán egy olyan mérési környezetet alakítottam ki, ami teljesen moduláris, így később, ha módosítani kellene, például más IaaS szolgáltatót szeretnénk használni, vagy más metrika gyűjtési módszert alkalmazni, esetleg a későbbiekben bemutatott különböző algoritmusokat szeretnénk használni, akkor csak a adott modult kell kicserélni, illetve maximum minimális változtatásokat eszközölni az alkalmazás többi részén.
 Az általam készült rendszer a 5 részből áll, ahogy azt az ábrán láthatjuk.
 
-[KÉP]
+<div id="meresi-kornyezet">
+![Mérési környezet\label{meresi-kornyezet}](img/meresi_kornyezet.png)
+</div>
 
 ##IaaS infrastruktúra
 IaaS szolgáltatónál megvalósított infrastruktúra, mely tartalmaz egy két rétegű infrastruktúrát. Egy skálázható alkalmazási réteget, előtte egy load balancer-t és mögötte egy adatbázis réteget.
