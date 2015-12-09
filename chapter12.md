@@ -2,9 +2,6 @@
 
 Ez a része a programonank teljesen moduláris, minvel lényege, hogy minél több skálázisi algoritmust egyszerűen ki lehessen próbálni.
 
-##Ruby
-A scaler implementációjára a Ruby programozási nyelvet választottam. A projekt méretét tekintve, és hogy csak egyedül dolgozom rajta, célom volt, hogy a kódom írása során az egyszerűségre[@KISS] törekedjek, és hogy ahol lehet a könyvtárak támogatására hagyatkozzak.
-
 ##Általános felépítése
 A skálázáshoz szükséges metrikákat a Graphite HTTP API-ján keresztül kérjük le.[@GraphiteAPI] Az API az eredményeket JSON formátumban adja vissza. Erre épülve készítettem egy Monitor osztályt, mely a lekérdezéseket kényelmesebbé teszi, úgy hogy könnyen paraméterezhetőek a függvényei és a  metrikákat egy könnyen használható struktúban adja vissza.
 
@@ -40,11 +37,42 @@ Implementálása a következő algoritmus szerint történt:
 &\hspace{1cm}\text{ne csinálj semmit inDown másodpercig}\\
 \end{align*}
 
+###Exponenciális simítás segítségével történő idősor előrejelzés
+Exponenciális simitás segítségével megjósolhatjuk a rendszer következő állapotát, majd ennek megfelően cselekedhetünk.
+Maga az idősor előrejelzés 2 paramétert fogad:
 
+* $\alpha$ - simítási tényező, $0 < \alpha < 1$
+* $\omega$ - megmondja, hogy a legutolsó hány mintavételezést vegye figyelembe
 
-###Exponenciális simítás segítségével történő előrejelzés
-Exponenciális simitás segítségével megjósolhatjuk a rendszer következő állapotást
+Implementációja a következő algoritmus szerint történt:
 
+\begin{align*}
+&pCPU = 0\\
+&i = 0\\
+&\text{Amíg }i < \omega\\
+&\hspace{1cm}pCPU = pCPU + \alpha * (1-\alpha)^i * avgCPU[most-i*dt]\\
+&\hspace{1cm}i = i + 1\\
+&\\
+&\text{,ahol dt a mintavételezési idő és pCPU az előrejelzett terhelés}\\
+\end{align*}
+
+Amint előrrejeleztük a terhelést a következő szabály alapján skálázunk:
+
+\begin{align*}
+&\text{ha pCPU > thrUP, akkor}\\
+&\hspace{1cm}numVM = numVM + 1\\
+&\hspace{1cm}\text{ne csinálj semmit cooldown másodpercig}\\
+&\\
+&\text{ha pCPU > thrUP, akkor}\\
+&\hspace{1cm}numVM = numVM - 1\\
+&\hspace{1cm}\text{ne csinálj semmit cooldown másodpercig}\\
+\end{align*}
+
+Mely szabály paraméterei:
+
+* thrUp - A köszöb mely fölött felfele skálázunk (pl.: 70%-os processzor kihasználtság)
+* thrDown - A köszöb mely fölött lefele skálázunk (pl.: 50%-os processzor kihasználtság)
+* cooldown - A skálázás lecsengésének ideje másodpercben, eddig nem végzünk újabb skálázást, ha skálázás történt.
 
 ##Skálázási algoritmusok összehasonlítása
 A rendszerem tesztelésére előállítottam a mestersége terhelést a JMeter segítségével.
@@ -53,12 +81,18 @@ A rendszerem tesztelésére előállítottam a mestersége terhelést a JMeter s
 ![Mesterséges terhelés\label{muterheles}](img/muterheles.png)
 </div>
 
+Lefolytattam a mérést mindkét algoritmus használatával, a következő eredményeket kaptam:
 
-----------------------
-Metrika                
-----------------------
-Késleltetés
+--------------------------- ---------------- ------------------
+Minőségi jellemző           Reaktív skálázó  Prediktív skálázó
+--------------------------- ---------------- ------------------
+Átlagos késleltetés (ms)    382              324
 
-Üzemeltetési költség
+Üzemeltetési költség        6.72             6.64
+(szerver óra)
 
-Elérhetőség
+Elérhetőség (%)             97.2             98.1
+--------------------------- ---------------- ------------------
+
+Az eredményekből láthatjuk, hogy egy még egyszerűen implementálható prediktív skálázó alkalmazásával is jobb eredményt érhetünk el, mint ha csak reaktív skálázást alkalmaznánk.
+
