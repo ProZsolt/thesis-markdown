@@ -1,7 +1,7 @@
 #Skálázási módszerek
 
 ##Erőforrás allokáció
-Egy rendszer tervezésénél fel kell készülnünk a beérkező forgalom terhelésére, erre több módszer is létezik, melyeket itt mutatok be.
+Egy rendszer tervezésénél fel kell készülnünk a beérkező forgalom terhelésére, erre több módszer is létezik, melyeket itt mutatok be.[@srirama_deliverable_2010]
 
 ###Maximumra tervezés
 A várható terhelés maximumára tervezzük a rendszerünket és ennek megfelelően foglaljuk le az erőforrásainkat, így minden beérkező igényt ki tudunk elégíteni. Hátránya, hogy az idő nagy részében az erőforrásaink kihasználatlanok, így a nem használt erőforrásainkért feleslegesen fizetünk.
