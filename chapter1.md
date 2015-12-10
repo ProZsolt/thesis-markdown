@@ -1,1 +1,5 @@
 #Bevezetés
+
+A felhő infrastruktúra legnagyobb előnye a hagyományos saját infrasruktúrával szemben hogy Infrastucture as a Service (IaaS) modell tetszés szerint foglalhatunk le és szabadíthatunk fel virtuális szervereket látszólag korlátlan mennyiségben, így ideális esetben mindig annyi erőforrásért fizetünk, amennyit ha ténylegesen kihasználunk. Sajnos az IaaS szolgáltatók jelenleg kevés, alig paraméterezhető eszközt biztosítanak a felhő infrastruktúra automatikus skálázására.
+Az aktuális terheléshez szükséges erőforrások mennyiségének megállapítása egy nem triviális probléma. Az utóbbi években számos automatikus skálázást megvalósító algoritmus, illetve vezérlés került ismertetésre a szakirodalomban, de nem létezett konkrét környezet, amelyeken ezen algoritmusokat valós környezetben tesztelni lehetett volna. 
+A szakdolgozatom célja, hogy ismertessem ezen algoritmusok fajtáit és létrehozzak egy olyan környezettet, amely segítségével ezen algoritmusok  megadott minőségi jellemzők alapján összehasonlíthatóak.
