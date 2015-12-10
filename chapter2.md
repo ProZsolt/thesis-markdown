@@ -1,6 +1,6 @@
 #Cloud computing alapfogalmak
 
-Ennek a fejezetnek a célja, hogy mielőtt rátérnék a szakdolgozatom lényegi részét adó feladat tárgyalására, egy átfogó képet adjak az informatika ezen új ágáról.
+Ennek a fejezetnek a célja, hogy mielőtt rátérnék a szakdolgozatom lényegi részét adó feladat tárgyalására, egy átfogó képet adjak az informatika ezen ágáról.
 
 ##Mi a cloud computing?
 
