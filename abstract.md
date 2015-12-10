@@ -8,3 +8,7 @@ Az automatikus skálázás algoritmusok benchmarkolását lehetővé tévő kere
 
 Abstract {.unnumbered}
 ========
+
+The cloud infrastructure's main advantage against own infrasucture is that in the Infrastucture as a Service (IaaS) model we can provision and de provision virtual machines as needed in seemingly infinite quantity. Ideally we pay only for the resources that we actually use. Calculating the resource needed for the actual load is a non trivial problem. In the last few years many automatic scaling algorithm publicated.
+This thesis i will show the different issues that arise in the dinamic resource provisioning. In the first part I present the different scaling algorithms, and the load patterns that appear in the real world. Afther that I create the quality model of the automatic scaling algorithms.
+The automatic scaling algorithm benchmarking framework was implemented on the Amazon Web Services infrastructure, where I scale a Worldpress application.
