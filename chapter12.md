@@ -1,11 +1,11 @@
 #Skálázó
 
-Ez a része a programonank teljesen moduláris, minvel lényege, hogy minél több skálázisi algoritmust egyszerűen ki lehessen próbálni.
+Ez a része a programomnak teljesen moduláris, mivel lényege, hogy minél több skálázisi algoritmust egyszerűen ki lehessen próbálni.
 
 ##Általános felépítése
-A skálázáshoz szükséges metrikákat a Graphite HTTP API-ján keresztül kérjük le.[@GraphiteAPI] Az API az eredményeket JSON formátumban adja vissza. Erre épülve készítettem egy Monitor osztályt, mely a lekérdezéseket kényelmesebbé teszi, úgy hogy könnyen paraméterezhetőek a függvényei és a  metrikákat egy könnyen használható struktúban adja vissza.
+A skálázáshoz szükséges metrikákat a Graphite HTTP API-ján keresztül kérjük le.[@GraphiteAPI] Az API az eredményeket JSON formátumban adja vissza. Erre épülve készítettem egy Monitor osztályt, mely a lekérdezéseket kényelmesebbé teszi úgy, hogy könnyen paraméterezhetőek a függvényei és a  metrikákat egy könnyen használható struktúban adja vissza.
 
-A kálázási algoritmus végeredményét, hogy kell-e ki- vagy beskálázni az Erőforrás Controller megfelelő függvényeinek hivogatásával jutathatjuk érvényre.
+A skálázási algoritmus végeredményét, hogy kell-e ki- vagy beskálázni az Erőforrás Controller megfelelő függvényeinek hivogatásával jutathatjuk érvényre.
 
 ##Automatikus skálázási algoritmusok
 Kiválasztottam egy reaktív és egy prediktív algoritmust, melyek implementálásával és a mérés eredményeinek összehasonlításával demonstrálom a rendszer működését.
@@ -15,7 +15,9 @@ Mindkét algoritmus működéséhez szügséges, hogy hozzáférjenek a követke
 * numVM - Aktuálisan futó virtuális gépek száma
 
 ###Szabály alapú skálázás
-A legtöbb IaaS cloud szolgáltató alapjában véve ezt használja alapértelmezetten mivel relatívan egyszerű az implementálása és felhasználói szempontból egyszerű a paraméterezése.
+A legtöbb IaaS cloud szolgáltató általában ezt használja alapértelmezetten mivel relatívan egyszerű az implementálása és felhasználói szempontból egyszerű a paraméterezése.
+
+
 A következő paramétereket fogadja az algoritmus:
 
 * thrUp - A köszöb mely fölött felfele skálázunk (pl.: 70%-os processzor kihasználtság)
@@ -56,7 +58,7 @@ Implementációja a következő algoritmus szerint történt:
 &\text{,ahol dt a mintavételezési idő és pCPU az előrejelzett terhelés}\\
 \end{align*}
 
-Amint előrrejeleztük a terhelést a következő szabály alapján skálázunk:
+Amint előrejeleztük a terhelést a következő szabály alapján skálázunk:
 
 \begin{align*}
 &\text{ha pCPU > thrUP, akkor}\\
@@ -70,8 +72,8 @@ Amint előrrejeleztük a terhelést a következő szabály alapján skálázunk:
 
 Mely szabály paraméterei:
 
-* thrUp - A köszöb mely fölött felfele skálázunk (pl.: 70%-os processzor kihasználtság)
-* thrDown - A köszöb mely fölött lefele skálázunk (pl.: 50%-os processzor kihasználtság)
+* thrUp - A köszöb, mely fölött felfele skálázunk (pl.: 70%-os processzor kihasználtság)
+* thrDown - A köszöb, mely fölött lefele skálázunk (pl.: 50%-os processzor kihasználtság)
 * cooldown - A skálázás lecsengésének ideje másodpercben, eddig nem végzünk újabb skálázást, ha skálázás történt.
 
 ##Skálázási algoritmusok összehasonlítása

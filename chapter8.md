@@ -1,6 +1,6 @@
 # Mérési környezet áttekintése
 Szakdolgozatom sororán egy olyan mérési környezetet alakítottam ki, ami teljesen moduláris, így később, ha módosítani kellene, például más IaaS szolgáltatót szeretnénk használni, vagy más metrika gyűjtési módszert alkalmazni, esetleg a későbbiekben bemutatott különböző algoritmusokat szeretnénk használni, akkor csak a adott modult kell kicserélni, illetve maximum minimális változtatásokat eszközölni az alkalmazás többi részén.
-Az általam készült rendszer a 5 részből áll, ahogy azt az ábrán láthatjuk.
+Az általam készült rendszer 5 részből áll, ahogy azt az ábrán láthatjuk.
 
 <div id="meresi-kornyezet">
 ![Mérési környezet\label{meresi-kornyezet}](img/meresi_kornyezet.png)
@@ -16,7 +16,7 @@ A WordPress egy nyílt forráskódú weboldal készítő eszköz PHP-ben írva. 
 
 ##Forgalom generátor
 A forgalom generátor feladata, hogy a valóságban előforduló forgalomfajtákkal (melyről részletesebben a 7. fejezetben írtam) terhelje meg a rendszert, hogy a rendszernek erre adott válaszát mérni tudjuk.
-A JMeter-el történő konkrét megvalósításról a 10. fejezetben írok bővebben.
+A JMeter-rel történő konkrét megvalósításról a 10. fejezetben írok bővebben.
 
 ##Monitor
 
@@ -30,8 +30,8 @@ A mérési környezet lényegét adó modul, mely felelős a Monitor által begy
 Ez felelős a Scaler-által ígényelt erőforrások lefoglalásáért. Interfaceként szolgál az IaaS infrastruktúra felé, esetleges IaaS szolgáltató váltásnál elég ezt lecserélni.
 A modul a következő fukncionalitásokat tudja:
 
-* `scale_up`: A jelenlegi kapacitást megnöveli X egységgel, alapértelmezetten egyel
-* `scale_down`: A jelenlegi kapacitást lecsökkenti X egységgel, alapértelmezetten egyel
+* `scale_up`: A jelenlegi kapacitást megnöveli X egységgel, alapértelmezetten eggyel
+* `scale_down`: A jelenlegi kapacitást lecsökkenti X egységgel, alapértelmezetten eggyel
 * `set_capacity`: A kapacitást beállítja X egységre
 
 Jelenlegi megvalósításnál a kontroller AWS SDK segítségével méretezi a Auto Scaling group-ban található szerverek számát.

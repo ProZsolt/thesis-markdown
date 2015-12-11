@@ -5,31 +5,35 @@ Ez a fejezet mutatja be a különböző terhelés generátor alkalmazásoknak az
 Több tucat terhelés generátor található a piacon, de a legtöbb nem felel meg az igényeinknek. Alábbiakban bemutatom az 4 leggyakrabban használt terhelés generátort.[@BlazeMeter]
 
 ###The Ginder
-Grinder egy ingyenes Java alapú BSD licence alatt elérhető terhelés generátor.  Paco Gomez fejlesztette és Philip Aston tartja karban. Két részből áll, The Grinder Console-ból, ami egy GUI alkalmazás, mely a különböző Grinder Agent-eket írányítja, és monitorozza valós időben, valamint IDE-ként is funkcionál a tesztek elkészítéséhez, és a Grinder Agent-ből, ami egy headless terhelés generátor
+Grinder egy ingyenes Java alapú BSD licence alatt elérhető terhelés generátor.  Paco Gomez fejlesztette és Philip Aston tartja karban. Két részből áll, The Grinder Console-ból, ami egy GUI alkalmazás, mely a különböző Grinder Agent-eket írányítja, és monitorozza valós időben, valamint IDE-ként is funkcionál a tesztek elkészítéséhez, és a Grinder Agent-ből, ami egy headless terhelés generátor.
+
 
 Főbb funkcók:
 
 * TCP proxy, mellyel tárolni tudjuk a teszt során zajló hálózati forgalom adatait
 * Elosztott tesztek, amelyek a Grinder Agent-ek növekedésével skálázódnak.
-* Java API-ra épülő Python és Closure szkriptek a teszt esetek készítéséhez
+* Java API-ra épülő Python és Closure szkriptek a tesztesetek készítéséhez
 * Könnyű paraméterezhetőség, mely magába foglalja az automata tesztgenerálást, és biztosítja hogy hozzáférhessünk külső fájlokhoz és adatbázisokhoz
 * Több protokol támogatása
 
 ###Gatling
 Gatling szintén egy ingyenes és nyílt forráskódú terhelés tesztelő alkalmazás. Elsődlegesen Stephane Landelle fejleszti és tartja karban. Gatlingnek egy egyszerű GUI-ja van, mely csak a teszt eredményeit hivatott megjeleníteni. A teszteket egy könnyen megtanulható domain specifikus nyelvben írhatjuk.
 
+
 Főbb funkcók:
 
 * HTTP rekorder
 * Egy egyszerűen megtanulható domain specifikus nyelv a tesztek írásához
 * Scala alapú
-* Magasab terhelés generálás asszinkron, nem blokkolo megközelítés használatával
+* Magasabb terhelés generálás asszinkron, nem blokkolo megközelítés használatával
 * HTTPS protokol támogatása
 * Átfogó informatív értékelés
 
 ###Tsung
-Tsunk egy Erlang alapú nyílt forráskódú terhelés tesztelő alkalmazás. Nicolas Niclausse készítette 2001-ben hogy tesztelje a Jabber(XMPP) chat alkalmazást. 2003-ban már képes volt HTTP protokollon futtatott tesztekre is. Ma már egy teljes értékű teljesítmény ?ez kell ide kétszer? teljesítmény tesztelő szoftverré nőtte ki magát.
+Tsunk egy Erlang alapú nyílt forráskódú terhelés tesztelő alkalmazás. Nicolas Niclausse készítette 2001-ben, hogy tesztelje a Jabber(XMPP) chat alkalmazást. 2003-ban már képes volt HTTP protokollon futtatott tesztekre is. Ma már egy teljes értékű teljesítmény tesztelő szoftverré nőtte ki magát.
 Nem rendelkezik grafikus felülettel.
+
+
 Főbb funkciók:
 
 * Elosztott felépítés
@@ -41,9 +45,10 @@ Főbb funkciók:
 ###JMeter
 JMeter egy Java nyelven írodott nyílt forráskódú, teljes értékű asztali alkalmazás. Apache Software Foundation készítette 2001-ben. Moduláris struktúrájú, egy core szoftver kiegészítve rengeteg pluginnal. A legtöbb protokol implementálva van pluginként.
 
+
 Főbb funkcók:
 
-* Kereszt platformos. Minden operációs rendszeren fut amin van Java
+* Kereszt platformos. Minden operációs rendszeren fut, amin van Java
 * Skálázható. Ha nagyobb terhelésre van szügségünk, mint amire egy gép képes, akkor egy master irányíthat több távoli alkalmazást
 * Sok protokollt támogat alapértelmezetten.
 * Sok beépített és külső eszköz a teszt eredményeinek analizására és megjelenítésére.
@@ -60,10 +65,10 @@ Az eszköz kiválasztásnál a fő szempontok a következők voltak:
 * Open source
 * Futtatható master, több slave módban
 
-Választásom a JMeterre eset mivel ez teljesen lefedi az általam támasztott igényeket.
+Választásom a JMeterre esett, mivel ez teljesen lefedi az általam támasztott igényeket.
 
 ###Throughput Shaping Timer
-Cél az volt, hogy a valóságban előforduló forgalomfajtákat (menyről részletesebben a 7. fejezetben írtam) generáljunk és ezzel terheljük meg a rendszerünket.
+Cél az volt, hogy a valóságban előforduló forgalomfajtákat (melyről részletesebben a 7. fejezetben írtam) generáljunk és ezzel terheljük meg a rendszerünket.
 A szabályozható forgalom generálást a JMeter Throughput Shaping Timer Plugin-jével oldottam meg. A plugin segítségével könnyen beállíthatjuk a kívánt másodpercenkénti kérések számát.
 
 ###Felhasználók szimulálása

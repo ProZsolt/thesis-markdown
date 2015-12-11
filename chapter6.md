@@ -11,11 +11,11 @@ Ezek az alapvető metrikák nem csak a felhő infrastruktúrára jellemezőek, h
  * Sebesség: Adott idő alatt elvégzett műveletek száma
  * Sebesség növekedés: Sebesség növekedés amit azzal érünk el, hogy egy újabb számítási egységet kapcsolunk a rendszerbe
  * Hatékonyság: Az elérhető teljesítmény maximumának százaléka
- * Skálázhatóság: A képesség hogy az erőforrások skálázásával rendszerteljesítményt nyerjünk
+ * Skálázhatóság: A képesség, hogy az erőforrások skálázásával rendszerteljesítményt nyerjünk
  * Elaszticitás: A rendszer alkalmazkodóképessége az idővel változó terhelésre
  
 ###Felhő képességek
-Ezek azok a mérőszámok, amelyek leírják a hardver, szoftver, hálózati és hibatűrő képességét egy felhő infrastruktúrának az alábbiak szerint.
+Ezek azok a mérőszámok, amelyek leírják egy felhő infrastruktúra hardver-, szoftver-, hálózati- és hibatűrő képességét az alábbiak szerint.
 
  * Késleltetés: A kérés elküldésétől az első válasz beérkezéséig eltelt idő.
  * Átengedő képesség: Átlagos kérések/műveletek/taszkok száma adott idő alatt.
@@ -33,7 +33,7 @@ Ezek a szolgáltatással kapcsolatos metrikák, melyek megmutatják az adott inf
  * Üzemeltetési költség: A nyújtott felhőszolgáltatások (processzor teljesítmény, háttértár) adott időre eső költsége.
  * Szolgáltatási szint megállapodás / biztonság: A szolgáltatási szint megállapodásnak, a biztonsági-, titoktartási-, szerzői jogi szabályoknak való megfelelés
  * Elérhetőség: Az idő hány százalékában érhető el a rendszer.
- * Termelékenység: Egységnyi költségre vetített felhő szolgáltatás teljesítményt.
+ * Termelékenység: Egységnyi költségre vetített felhő szolgáltatás teljesítmény.
  
 ##Skálázási algoritmusok minőségmodellje
 A fentebb általánosságban bemutattam a felhőhöz kapcsolódó metrikákat, alábbiakban részletesen fogok írni a skálázáshoz szorosan kapcsolódó minőségi jellemzőket.
@@ -51,5 +51,5 @@ Elaszticitás a rendszer alkalmazkodóképessége az idővel változó terhelés
 Minél több/nagyobb szervert futtatunk annál nagyobb az üzemeltetési költségünk, ezért törekedni kell arra, hogy ha a rendszeren nincsen terhelés, akkor ne használjunk feleslegesen erőforrásokat.
 
 ###Elérhetőség
-Elérhetőség azt mutatja, hogy a rendszer az idő hány százalékában ad választ a kéréseinkre.
-A terhelés egészen addig nőhet, hogy a rendszer nem csak egyre hosszabb idő múlva ad választ, hanem egyáltalán nem tudja kiszolgálni a hozzá beérkezett kéréseinket, ekkor mondjuk, hogy a rendszer elérhetetlenné vált. Általában a szolgáltatási szint megállapodásban (röviden: SLA) van megadva egy érték, hogy a szolgáltatásnak az idő hány százalékában kell elérhetőnek lennie, ha ezt a szolgáltató megsérti, akkor a felhasználó jogosult a kártalanítást kérnie a szolgáltatótól.
+Az elérhetőség azt mutatja, hogy a rendszer az idő hány százalékában ad választ a kéréseinkre.
+A terhelés egészen addig nőhet, hogy a rendszer nem csak egyre hosszabb idő múlva ad választ, hanem egyáltalán nem tudja kiszolgálni a hozzá beérkezett kéréseinket, ekkor mondjuk, hogy a rendszer elérhetetlenné vált. Általában a szolgáltatási szint megállapodásban (röviden: SLA) van megadva egy érték, hogy a szolgáltatásnak az idő hány százalékában kell elérhetőnek lennie, ha ezt a szolgáltató megsérti, akkor a felhasználó jogosult kártalanítást kérni a szolgáltatótól.
